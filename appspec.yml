@@ -1,0 +1,25 @@
+version: 0.0
+os: linux
+
+files:
+  - source: /
+    destination: /var/www/html
+    overwrite: yes
+permissions:
+  - object: /var/www/html
+    owner: root
+    group: root
+    mode: 755
+hooks:
+  ApplicationStop: 
+    - location: scripts/appStopService.sh
+      timeout: 300
+      runas: ec2-user
+  BeforeInstall:
+    - location: scripts/bfInstallService.sh
+      timeout: 300
+      runas: ec2-user
+  ApplicationStart:
+    - location: scripts/appStartService.sh
+      timeout: 300
+      runas: ec2-user
