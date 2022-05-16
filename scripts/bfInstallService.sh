@@ -1,3 +1,3 @@
 #!/bin/bash
-cd test_index
+cd /var/www/html
 sudo mkdir test-install
